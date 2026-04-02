@@ -1,0 +1,42 @@
+<!DOCTYPE html> <!--HTML5로 작성되었다는 선언 브라우저가 최신방식으로 파일을 읽게끔 함-->
+<html lang="ko"> <!--웹페이지 주언어가 한국어라는 선언-->
+<head>  <!-- 문서의 메타데이터(데이터에 대한 데이터)를 담는 단락-->
+    <meta charset="UTF-8">  <!--이 문서의 문자를 UTF-8 방식으로 읽으라는 표시-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 기기의 폭에 맞춰 보여줘라 라는 코드 
+    width=device-width = 기기의 가로길이에 맞춤, initial-scale=1.0 = 처음 접속 시 비율을 1:1로 맞춤-->
+    <title>Donation Map (기부지도)</title>
+    <!--브라우저 위에 뜨는 사이트 문구-->
+    <script src="https://cdn.tailwindcss.com"></script> </head>
+    <!--"인터넷 어딘가(CDN)에 저장된 Tailwind CSS라는 디자인 도구를 가져와라"는 명령어입니다.-->
+<body class="bg-gray-50 text-gray-900">
+    <nav class="p-6 bg-white shadow-sm flex justify-between items-center"> 
+        <a href="/" class="hover:opacity-80 transition-opacity">
+            <h1 class="text-2xl font-bold text-blue-600">Donation Map</h1>
+        </a>
+        <!--<a>태그는 Anchor의 약자로 하이퍼링크를 만드는 역할을 함.
+            href에는 어느 페이지로 가야하는지에 대한 주소가.
+            class에는 당연히 어떻게 꾸며질것인가에 대한 내용이.-->
+        <a href="main_service.html" 
+            class="inline-block px-6 py-2 bg-blue-600 text-white font-bold rounded-2xl shadow-lg hover:bg-blue-700 transition-all duration-300 text-sm">
+            기부 지도 보러가기
+        </a>
+    </nav>
+    <!--<nav> (Navigation): 화면 맨 위에 고정된 긴 막대기 (로고가 있는 곳)-->
+    
+    <main class="max-w-4xl mx-auto mt-20 text-center px-4">
+        <!--<main> (Main Content): 페이지의 진짜 내용이 들어가는 중앙 영역-->
+        <h2 class="text-4xl font-extrabold mb-4">세상의 모든 기부를 한눈에.</h2>
+        <p class="text-xl text-gray-600 mb-8">신뢰할 수 있는 기부 플랫폼을 큐레이션하여 연결해 드립니다.</p>
+        
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+            <!--<div> (Division): 내용을 하나로 묶어주는 '상자' (여기서는 중앙의 흰색 카드)-->
+            <p class="text-gray-500 italic">"현재 프로젝트 준비 중입니다. 곧 만나보실 수 있습니다."</p>
+            <div class="mt-6 flex justify-center gap-4">
+                <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm">#신뢰도검증</span>
+                <!--<span> (Span): 문장 안에서 특정 단어만 따로 꾸미거나 태그 모양을 만들 때 쓰는 '작은 조각'-->
+                <span class="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm">#기부큐레이션</span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

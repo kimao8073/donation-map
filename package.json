@@ -1,0 +1,45 @@
+{
+  "name": "donation-map",
+  "version": "1.0.0",
+  "description": "Donation Map (\uae30\ubd80\uc9c0\ub3c4): crawl public campaigns, refine with local LLM, and serve a searchable web UI",
+  "main": "./src/index.js",
+  "bin": {
+    "donation-map": "./bin/cli.js"
+  },
+  "scripts": {
+    "discover:api": "node scripts/discover-kakao-api.js",
+    "build:processed": "node scripts/build-processed.js",
+    "start": "node server.js",
+    "crawl:now:md": "node bin/cli.js now --format md --out out/fundraisings-now.md",
+    "crawl:now:json": "node bin/cli.js now --format json --out out/fundraisings-now.json",
+    "crawl:now:csv": "node bin/cli.js now --format csv --out out/fundraisings-now.csv",
+    "crawl:goodneighbors:md": "node bin/cli.js goodneighbors --format md --out out/goodneighbors-campaigns.md",
+    "crawl:goodneighbors:json": "node bin/cli.js goodneighbors --format json --out out/goodneighbors-campaigns.json",
+    "crawl:goodneighbors:csv": "node bin/cli.js goodneighbors --format csv --out out/goodneighbors-campaigns.csv",
+    "crawl:happybean:md": "node bin/cli.js happybean --format md --out out/happybean-donations.md",
+    "crawl:happybean:json": "node bin/cli.js happybean --format json --out out/happybean-donations.json",
+    "crawl:happybean:csv": "node bin/cli.js happybean --format csv --out out/happybean-donations.csv",
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "iconv-lite": "^0.7.2"
+  },
+  "devDependencies": {
+    "playwright": "^1.59.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "scripts/",
+    "README.md",
+    "package.json"
+  ]
+}
