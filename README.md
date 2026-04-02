@@ -32,6 +32,54 @@ OLLAMA_MODEL=llama3.2:1b FORCE_REFINE=true MAX_REFINE=2000 CONCURRENCY=2 CHECKPO
 npm start
 ```
 
+## Server Scripts
+
+서버 운영을 "실제 프로덕션처럼" 나눠 실행할 수 있도록, 아래 3개의 실행 파일을 제공합니다.
+
+1. 서버 셋업(의존성 + Ollama 모델 확인/다운로드 + 최초 데이터 생성)
+   - 실행: `npm run server:setup`
+2. 서버 데이터 새로고침(크롤링 + LLM 가공)
+   - 실행: `npm run server:refresh`
+3. 서버 시작(웹 서버만 실행)
+   - 실행: `npm run server:start`
+
+### server:setup
+
+```bash
+OLLAMA_MODEL=llama3.2:1b npm run server:setup
+```
+
+하는 일:
+
+1. `node_modules`가 없으면 `npm i`
+2. Ollama 접속 확인 후 모델이 없으면 `ollama pull`
+3. `server:refresh`를 1회 수행해 `processed/campaigns.json`을 만들어 둠
+
+### server:refresh
+
+```bash
+OLLAMA_MODEL=llama3.2:1b npm run server:refresh
+```
+
+하는 일:
+
+1. `out/*.json` 갱신을 위해 3개 소스를 다시 크롤링
+2. `scripts/build-processed.js`를 실행해 `processed/cache.json`과 `processed/campaigns.json` 갱신
+
+기본은 증분 업데이트(`CHANGED_ONLY=true`)이며, 전체 재가공이 필요하면:
+
+```bash
+FORCE_REFINE=true OLLAMA_MODEL=llama3.2:1b npm run server:refresh
+```
+
+### server:start
+
+```bash
+npm run server:start
+```
+
+웹 서버만 실행합니다. (데이터가 없으면 `server:refresh`를 안내 메시지로 출력)
+
 - 메인 페이지: `http://127.0.0.1:8787/` (`index.html`)
 - 앱 페이지: `http://127.0.0.1:8787/main_service.html`
 - API: `http://127.0.0.1:8787/api/campaigns`
